@@ -47,7 +47,7 @@ export async function createLog(req, res) {
 
 export async function getLogs(req, res) {
   try {
-    const userId = req.user.userId; 
+    const userId = req.user.id; 
     const thirtyDaysAgo = new Date();
     thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
 
