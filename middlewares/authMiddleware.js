@@ -14,7 +14,7 @@ const authMiddleware = (req, res, next) => {
     const decoded = jwt.verify(token, "cumondaddy");
 
     req.user = decoded;
-    
+    console.log(req.user)
     next();
   } catch (err) {
     res.status(401).json({ error: 'Invalid or expired token' });
