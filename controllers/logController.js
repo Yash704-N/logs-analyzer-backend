@@ -53,8 +53,7 @@ export async function getLogs(req, res) {
 
     
     const logs = await Log.find({
-      userId: userId, 
-      timestamp: { $gte: thirtyDaysAgo }
+      userId: userId
     });
 
     res.status(200).json({ success: true, logs });
