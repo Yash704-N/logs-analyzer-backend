@@ -6,7 +6,14 @@ import User from "../models/User.js";
 export async function createLog(req, res) {
   console.log("Data: ", req.body);
   try {
-      const log = await Log.create(req.body);
+      const istOffset = 5.5 * 60 * 60 * 1000; // Convert 5 hours 30 minutes to milliseconds
+    const istTime = new Date(new Date(req.body.time).getTime() + istOffset).toISOString();const log = await Log.create({
+        userId: req.body.userId,
+        action: req.body.action,
+        details: req.body.details,
+        anomaly: req.body.anomaly,
+        timestamp: istTime,
+      });
       console.log("Log created: ", log);
 
       if (log.anomaly) {
